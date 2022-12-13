@@ -6,8 +6,8 @@ POST http://localhost:8000/auth-token/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"{{pass}}"
+    "username":"test_user",
+    "password":"test123"
 }
 ### details about user
 @auth_token = {{get_token.response.body.token}}
@@ -15,9 +15,19 @@ Content-Type: application/json
 GET http://localhost:8000/api/users/me/ HTTP/1.1
 Authorization: Token {{auth_token}}
 
+###
+GET http://localhost:8000/api/users/admin/ HTTP/1.1
+Authorization: Token {{auth_token}}
+
 ### create file
 POST http://localhost:8000/api/files/
 Authorization: Token {{auth_token}}
 {
-    "name" : "tes"
+    "name" : "test file",
+}
+
+{
+    "name" : string,
+    "file" : file,
+    "folder"
 }
