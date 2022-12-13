@@ -13,7 +13,7 @@ const ShowFiles = () => {
                 timestamp: Date.now(),
                 caption:"file1",
                 fileURL:"",
-                size:2
+                size:'2 mb'
             }
         },
         {
@@ -21,7 +21,23 @@ const ShowFiles = () => {
                 timestamp: Date.now(),
                 caption:"file2",
                 fileURL:"",
-                size:2
+                size:'3 mb'
+            }
+        },
+        {
+            item:{
+                timestamp: Date.now(),
+                caption:"file3",
+                fileURL:"",
+                size:'2 mb'
+            }
+        },
+        {
+            item:{
+                timestamp: Date.now(),
+                caption:"file4",
+                fileURL:"",
+                size:'1 mb'
             }
         }
     ]

@@ -7,6 +7,7 @@ import ShowFiles from './Components/showfiles';
 import SideBar from './Components/SideBar';
 import SideIcons from './Components/SideIcons';
 import Header from './Components/Header'
+import Login from './Components/login';
 
 class App extends React.Component{
   state = {
@@ -26,16 +27,18 @@ class App extends React.Component{
     })
     .catch(err => {})
   }
+
   render(){
     return (
-      <div className="App">
-        <Header/>
-        <div className='app_main'>
-          <SideBar/>
-          <ShowFiles/>
-          <SideIcons/>
-        </div>
-      </div>
+      <Login/>
+      // <div className="App">
+      //   <Header/>
+      //   <div className='app_main'>
+      //     <SideBar/>
+      //     <ShowFiles/>
+      //     <SideIcons/>
+      //   </div>
+      // </div>
     );
   }
 }
