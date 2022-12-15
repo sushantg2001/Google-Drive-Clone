@@ -3,6 +3,17 @@ import React ,{useState, useEffect} from 'react'
 import FileCard from './filecard'
 import FileItem from './fileitem'
 import '../styles/FilesView.css'
+import AuthService from '../Services/AuthService'
+import axios from 'axios';
+
+function getFiles(){
+    const token = AuthService.getCurrUser()
+    
+    const url = 'http://localhost:8000/api/files'
+    axios.get(url,{
+        'Authorization': token
+    })
+}
 
 const ShowFiles = () => {
     // const [files, setFiles] = useState([])
@@ -12,7 +23,7 @@ const ShowFiles = () => {
             item:{
                 timestamp: Date.now(),
                 caption:"file1",
-                fileURL:"",
+                fileURL:"file:\\C:\\Users\\drbn\\OneDrive\\Documents\\IIITD\\Sem 7\\cld\\github\\admin.txt",
                 size:'2 mb'
             }
         },
@@ -44,6 +55,8 @@ const ShowFiles = () => {
     useEffect(() => {
         //get file data - id, data; data - title, timestamp, fileurl, filesize
         // setFiles()
+        const token = AuthService.getCurrUser()
+        console.log(token)
     },[])
 
     console.log(files)

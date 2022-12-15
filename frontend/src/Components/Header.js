@@ -9,6 +9,7 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
+import AuthService from '../Services/AuthService';
 
 const Header = ({ userPhoto }) => {
     return (
@@ -29,8 +30,12 @@ const Header = ({ userPhoto }) => {
                     <HelpOutlineIcon />
                     <SettingsIcon />
                 </span>
-                <AppsIcon />
-                <img src={userPhoto} alt="User Photo"/>
+                {/* <AppsIcon /> */}
+                <div>
+                    {AuthService.getUserName()}
+                </div>
+                {/* <img src={userPhoto} alt="User Photo"/> */}
+                <div><button onClick={AuthService.logout()}>Sign out</button></div>
             </div>
         </div>
     )
