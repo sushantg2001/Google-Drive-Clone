@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "rest-client.environmentVariables": {
+            "$shared": {
+                "pass": "admin123",
+            },
+            "local": {
+                "app_url": "http://127.0.0.1:8000/api",
+                "auth_url": "http://127.0.0.1:8000/auth-token/",
+            },
+        }
+    }
+}
