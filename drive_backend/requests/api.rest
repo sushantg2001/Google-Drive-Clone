@@ -24,10 +24,13 @@ POST http://localhost:8000/api/files/
 Authorization: Token {{auth_token}}
 {
     "name" : "test file",
+    ""
 }
 
-{
-    "name" : string,
-    "file" : file,
-    "folder"
-}
+### get file details
+GET http://localhost:8000/api/files/1
+Authorization: Token {{auth_token}}
+
+### get entities inside folder by ID (user should have access of the folder)
+GET http://localhost:8000/api/utility/get_entities?folder=3
+Authorization: Token {{auth_token}}

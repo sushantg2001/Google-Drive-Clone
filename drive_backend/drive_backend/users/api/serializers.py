@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
             "url": {"view_name": "api:user-detail", "lookup_field": "username"}
         }
 
-class UserSerializerExtra(serializers.ModelSerializer):
+class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["username", "name", "email", "password"]
+        fields = ["username", "name", 'email', 'id']
