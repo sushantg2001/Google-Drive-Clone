@@ -51,33 +51,33 @@ const NewFile = () => {
         }
     }
 
-    // const handleUpload = () => {
-    //     setUploading(true)
+    const handleUpload = () => {
+        setUploading(true)
 
-    //     storage.ref(`files/${file.name}`).put(file).then(snapshot => {
-    //         console.log(snapshot)
+        // storage.ref(`files/${file.name}`).put(file).then(snapshot => {
+        //     console.log(snapshot)
 
-    //         storage.ref('files').child(file.name).getDownloadURL().then(url => {
-    //             //post image inside the db
+        //     storage.ref('files').child(file.name).getDownloadURL().then(url => {
+        //         //post image inside the db
 
-    //             db.collection('myFiles').add({
-    //                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    //                 caption: file.name,
-    //                 fileUrl: url,
-    //                 size: snapshot._delegate.bytesTransferred,
-    //             })
+        //         db.collection('myFiles').add({
+        //             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        //             caption: file.name,
+        //             fileUrl: url,
+        //             size: snapshot._delegate.bytesTransferred,
+        //         })
 
-    //             setUploading(false)
-    //             setOpen(false)
-    //             setFile(null)
-    //         })
+        //         setUploading(false)
+        //         setOpen(false)
+        //         setFile(null)
+        //     })
 
-    //         storage.ref('files').child(file.name).getMetadata().then(meta => {
-    //             console.log(meta.size)
-    //         })
+        //     storage.ref('files').child(file.name).getMetadata().then(meta => {
+        //         console.log(meta.size)
+        //     })
 
-    //     })
-    // }
+        // })
+    }
 
     return (
         <div className='newFile'>
@@ -100,7 +100,7 @@ const NewFile = () => {
                         ) : (
                                 <>
                                     <input type="file" onChange={handleChange} />
-                                    {/* <button onClick={handleUpload}>Upload</button> */}
+                                    <button onClick={handleUpload}>Upload</button>
                                 </>
                             )
                     }

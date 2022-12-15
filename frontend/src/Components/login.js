@@ -1,51 +1,30 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
+import axios from 'axios';
 import "../styles/login.css";
+import AuthService
+ from "../Services/AuthService";
 
 function Login() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
-
   const errors = {
     uname: "invalid username",
     pass: "invalid password"
   };
 
-  const handleSubmit = (event) => {
+  const [uname, setUname] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleSubmit = async(event) => {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
+    AuthService.login(uname,pass)
+    setIsSubmitted(true)
+    // location.reload()
   };
 
   // Generate JSX code for error message
@@ -60,17 +39,17 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
+          <input type="text" name="uname" required value={uname} onChange={(e) => setUname(e.target.value)}/>
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required />
+          <input type="password" name="pass" required value={pass} onChange={(e) => setPass(e.target.value)}/>
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
           {/* <input type="submit"/>Sign In */}
-          <button type="submit">Sign In</button>
+          <button type="submit" onClick={handleSubmit}>Sign In</button>
         </div>
       </form>
       Create new account <a href="">here</a>
@@ -81,7 +60,7 @@ function Login() {
     <div className="app">
       <div className="login-form">
         <div className="title">Drive Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        {renderForm}
       </div>
     </div>
   );
