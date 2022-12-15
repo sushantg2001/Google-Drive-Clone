@@ -5,7 +5,7 @@ from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateMode
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserDetailSerializer
 
 User = get_user_model()
 
@@ -24,5 +24,5 @@ class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericV
 
     @action(detail=False, permission_classes=[IsAuthenticated])
     def me(self, request):
-        serializer = UserSerializer(request.user, context={"request": request})
+        serializer = UserDetailSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
