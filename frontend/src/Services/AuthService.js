@@ -33,14 +33,15 @@ function getUserName(){
     const url = "http://localhost:8000/api/users/me/"
     console.log(token)
 
-    const config = {
-        headers: { Authorization: `Token ${token}` }
-    };
+    // const config = {
+    //     headers: { Authorization: `Token ${token}` }
+    // };
+    const header = { Authorization: `Token ${token}`}
 
-    axios.get(url,null,config)
+    axios.get(url,header)
     .then(response=>{
         console.log(response)
-        // return response
+        return response
     }).catch(err=>console.log(err))
 }
 function newUser(){
