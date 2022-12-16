@@ -35,4 +35,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
+# application = HelloWorldApplication(applicationssh -i "aws-eb.pem" ubuntu@ec2-13-233-133-41.ap-south-1.compute.amazonaws.com)

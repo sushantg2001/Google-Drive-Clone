@@ -29,7 +29,6 @@ class Folder(models.Model):
 
 class File(models.Model):
     name = models.CharField(max_length=100, blank=False, default='Untitled')
-    ext = models.CharField(editable=False, max_length=10, null=True)
     file = models.FileField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None)
     parent = models.ForeignKey(Folder, on_delete=models.CASCADE, null=True, default=None)
@@ -43,7 +42,7 @@ class File(models.Model):
         if self.id == 0:
             return '/root'
         parent_path = self.parent.path
-        current_path = f'{parent_path}/{self.name}.{self.ext}'
+        current_path = f'{parent_path}/{self.name}'
         return current_path
 
     class Meta:
