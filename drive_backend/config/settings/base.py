@@ -40,6 +40,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+print(env('DATABASE_URL'))
 DATABASES = {
     "default": env.db(
         "DATABASE_URL",
