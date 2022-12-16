@@ -1,5 +1,5 @@
 from django.db.models.signals import post_save, pre_save
-from .models import File, Folder
+from .models import File, Folder, FileAccess, FolderAccess
 from drive_backend.users.models import User
 from django.dispatch import receiver
 
@@ -30,3 +30,17 @@ def base_folder(sender, instance, created, *args, **kwawrgs):
             owner = instance,
             parent = root
         )
+
+@receiver(pre_save, sender=FileAccess)
+def update_slug_file(sender, instance, *args, **kwargs):
+    try:
+        instance.slug = f'{instance.user.id}-{instance.file.id}'
+    except FileAccess.DoesNotExist:
+        pass
+
+@receiver(pre_save, sender=FolderAccess)
+def update_slug_folder(sender, instance, *args, **kwargs):
+    try:
+        instance.slug = f'{instance.user.id}-{instance.folder.id}'
+    except FolderAccess.DoesNotExist:
+        pass

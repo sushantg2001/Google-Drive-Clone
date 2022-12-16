@@ -31,18 +31,20 @@ function getCurrUser(){
 function getUserName(){
     const token = getCurrUser()
     const url = "http://localhost:8000/api/users/me/"
-    console.log(token)
+    // console.log(token)
 
-    // const config = {
-    //     headers: { Authorization: `Token ${token}` }
-    // };
+    const [username, setUsername] = useState("noName");
+    const config = {
+        headers: { Authorization: `Token ${token}` }
+    };
     const header = { Authorization: `Token ${token}`}
 
-    axios.get(url,header)
+    axios.get(url,config)
     .then(response=>{
-        console.log(response)
-        return response
+        // console.log(response)
+        setUsername(response.data.username)
     }).catch(err=>console.log(err))
+    return username
 }
 function newUser(){
     //

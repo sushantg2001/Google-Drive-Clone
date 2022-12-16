@@ -1,17 +1,28 @@
 from rest_framework import serializers
-from drive_backend.file_system.models import File, Folder
+from drive_backend.file_system.models import File, Folder, FileAccess, FolderAccess
+from drive_backend.users.api.serializers import UserDetailSerializer
 
 class FileDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = '__all__'
+        exclude = ['users']
 
 class FileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = ['name', 'file', 'folder']
+        fields = ['name', 'file', 'folder', 'id']
 
 class FolderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Folder
-        fields = '__all__'
+        exclude = ['users']
+
+class FileAccessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FileAccess
+        fields = ['file', 'type', 'user']
+
+class FolderAccessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FolderAccess
+        fields = ['folder', 'type', 'user']

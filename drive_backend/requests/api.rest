@@ -28,9 +28,59 @@ Authorization: Token {{auth_token}}
 }
 
 ### get file details
-GET http://localhost:8000/api/files/1
+GET http://localhost:8000/api/files/7/
 Authorization: Token {{auth_token}}
 
 ### get entities inside folder by ID (user should have access of the folder)
-GET http://localhost:8000/api/utility/get_entities?folder=3
+GET http://localhost:8000/api/utility/get_entities?folder=5
+Authorization: Token {{auth_token}}
+
+### shared with me
+GET http://localhost:8000/api/utility/shared_with_me/
+Authorization: Token {{auth_token}}
+
+### view access
+GET http://localhost:8000/api/utility/share/file/1-7/ HTTP/1.1
+Content-Type: application/json
+Authorization: Token {{auth_token}}
+
+### share access
+POST http://localhost:8000/api/utility/share/file/ HTTP/1.1
+Content-Type: application/json
+Authorization: Token {{auth_token}}
+
+{
+    "file": 7,
+    "user": 1,
+    "type": "viewer"
+}
+
+### update access
+PATCH http://localhost:8000/api/utility/share/file/1-7/
+Content-Type: application/json
+Authorization: Token {{auth_token}}
+
+{
+    "type": "editor"
+}
+
+### delete access
+DELETE http://localhost:8000/api/utility/share/file/1-7/
+Content-Type: application/json
+Authorization: Token {{auth_token}}
+
+### view folder access
+POST http://localhost:8000/api/utility/share/folder/ HTTP/1.1
+Content-Type: application/json
+Authorization: Token {{auth_token}}
+
+{
+    "folder": 9,
+    "user": 1,
+    "type": "viewer"
+}
+
+###
+DELETE http://localhost:8000/api/utility/share/folder/1-9/
+Content-Type: application/json
 Authorization: Token {{auth_token}}

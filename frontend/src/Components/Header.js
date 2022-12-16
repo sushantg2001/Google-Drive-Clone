@@ -15,7 +15,7 @@ const Header = ({ userPhoto }) => {
     return (
         <div className='header'>
             <div className="header__logo">
-                <img src={"GDriveLogo"} alt="Google Drive" />
+                {/* <img src={"GDriveLogo"} alt="Google Drive" /> */}
                 <span>Drive</span>
             </div>
             <div className="header__searchContainer">
@@ -27,8 +27,8 @@ const Header = ({ userPhoto }) => {
             </div>
             <div className="header__icons">
                 <span>
-                    <HelpOutlineIcon />
-                    <SettingsIcon />
+                    {/* <HelpOutlineIcon /> */}
+                    {/* <SettingsIcon /> */}
                 </span>
                 {/* <AppsIcon /> */}
                 <div>

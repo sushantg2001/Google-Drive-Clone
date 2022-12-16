@@ -7,7 +7,7 @@ import AuthService from '../Services/AuthService'
 import axios from 'axios';
 
 function getFiles(){
-    let url = 'http://localhost:8000/api/utility/get_entities?folder=0'
+    let url = 'http://localhost:8000/api/utility/get_entities?folder=0' //shared files api link
     const [files, setFiles] = useState([])
     const token = localStorage.getItem("user")
 
@@ -21,43 +21,8 @@ function getFiles(){
     return files
 }
 
-const ShowFiles = () => {
-    // const [files, setFiles] = useState([])
-    // const files = [
-    //     {
-    //         id:1,
-    //         item:{
-    //             timestamp: Date.now(),
-    //             caption:"file1",
-    //             fileURL:"file:\\C:\\Users\\drbn\\OneDrive\\Documents\\IIITD\\Sem 7\\cld\\github\\admin.txt",
-    //             size:'2 mb'
-    //         }
-    //     },
-    //     {
-    //         item:{
-    //             timestamp: Date.now(),
-    //             caption:"file2",
-    //             fileURL:"",
-    //             size:'3 mb'
-    //         }
-    //     },
-    //     {
-    //         item:{
-    //             timestamp: Date.now(),
-    //             caption:"file3",
-    //             fileURL:"",
-    //             size:'2 mb'
-    //         }
-    //     },
-    //     {
-    //         item:{
-    //             timestamp: Date.now(),
-    //             caption:"file4",
-    //             fileURL:"",
-    //             size:'1 mb'
-    //         }
-    //     }
-    // ]
+const ShowSharedFiles = () => {
+    
     const files = getFiles()
     useEffect(() => {
         //get file data - id, data; data - title, timestamp, fileurl, filesize
@@ -70,6 +35,7 @@ const ShowFiles = () => {
     return (
         <div className='showfiles'>
             <div className='showfiles_row'>
+                <h2>shared with me</h2>
                 {
                     files.slice(0,5).map((id) => (
                         <FileCard name={id.name}/>
@@ -95,4 +61,4 @@ const ShowFiles = () => {
         </div>
     )
 }
-export default ShowFiles
+export default ShowSharedFiles
