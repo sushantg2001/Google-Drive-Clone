@@ -14,14 +14,6 @@ def file_size(sender, instance, *args, **kwargs):
     except File.DoesNotExist:
         pass
 
-@receiver(pre_save, sender=File)
-def file_ext(sender, instance, *args, **kwargs):
-    try:
-        instance.ext = instance.file.path.split('.')[1]
-        prev = File.objects.get(id=instance.id)
-    except File.DoesNotExist:
-        pass
-
 @receiver(post_save, sender=User)
 def base_folder(sender, instance, created, *args, **kwawrgs):
     if created:
