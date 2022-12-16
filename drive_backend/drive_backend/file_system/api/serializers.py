@@ -10,7 +10,7 @@ class FileDetailSerializer(serializers.ModelSerializer):
 class FileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = ['name', 'file', 'folder', 'id']
+        fields = ['name', 'file', 'parent', 'id']
 
 class FolderSerializer(serializers.ModelSerializer):
     class Meta:

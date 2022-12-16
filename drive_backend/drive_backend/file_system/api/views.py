@@ -56,7 +56,7 @@ class IsViewer(BasePermission):
 
 
 class FileViewSet(
-    RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, GenericViewSet
+    RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, GenericViewSet, CreateModelMixin
 ):
     queryset = File.objects.all()
 
@@ -80,6 +80,8 @@ class FileViewSet(
             return FileUpdateSerializer
         return FileDetailSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner = self.request.user)
 
 class FolderViewSet(
     RetrieveModelMixin,
@@ -108,6 +110,8 @@ class FolderViewSet(
             raise PermissionDenied("You do not have permission to perform this action.")
         return super().destroy(request, *args, **kwargs)
 
+    def perform_create(self, serializer):
+        serializer.save(owner = self.request.user)
 
 class FileAccessViewSet(
     RetrieveModelMixin,
@@ -265,7 +269,7 @@ class FilesandFolders(ObjectMultipleModelMixin, GenericViewSet):
         self.check_object_permissions(request=self.request, obj=folder)
         querylist = [
             {
-                "queryset": File.objects.filter(folder=parent),
+                "queryset": File.objects.filter(parent=parent),
                 "serializer_class": FileDetailSerializer,
                 "queryset": Folder.objects.filter(parent=parent),
                 "serializer_class": FolderSerializer,
