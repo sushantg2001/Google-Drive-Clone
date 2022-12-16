@@ -84,3 +84,5 @@ Authorization: Token {{auth_token}}
 DELETE http://localhost:8000/api/utility/share/folder/1-9/
 Content-Type: application/json
 Authorization: Token {{auth_token}}
+###
+GET http://13.233.133.41:8000/admin/
