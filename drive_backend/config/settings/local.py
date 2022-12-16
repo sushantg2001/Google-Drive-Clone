@@ -10,6 +10,13 @@ SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
     default="UcFf9VLqje79OfwL6CEpU0MZFwnQ0TVbdYz3GdygFhxNBUKDrpsynEGaql70crEH",
 )
+
+DATABASES = {
+    "default": env.db(
+        "TEST",
+        default="postgres://postgres:Wslpostgres@20@127.0.0.1:5432/drive_backend",
+    ),
+}
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0"]
 
