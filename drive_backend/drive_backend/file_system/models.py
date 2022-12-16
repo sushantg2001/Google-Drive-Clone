@@ -35,7 +35,6 @@ class File(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     users = models.ManyToManyField(User, related_name='files', through='FileAccess')
-    size = models.PositiveSmallIntegerField(editable=False, null=True)
 
     @property
     def path(self):
