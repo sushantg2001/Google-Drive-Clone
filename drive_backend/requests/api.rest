@@ -18,15 +18,15 @@ GET {{url}}/api/users/me/ HTTP/1.1
 Authorization: Token {{auth_token}}
 
 ### get file details
-GET {{url}}//localhost:8000/api/files/11/
+GET {{url}}/api/files/14/
 Authorization: Token {{auth_token}}
 
 ### delete file
-DELETE http://localhost:8000/api/files/11/
+DELETE {{url}}/api/files/14/
 Authorization: Token {{auth_token}}
 
 ### update file
-PATCH http://localhost:8000/api/files/11/
+PATCH {{url}}/api/files/14/
 Authorization: Token {{auth_token}}
 Content-Type: application/json
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ### get entities inside folder by ID (user should have access of the folder)
-GET http://localhost:8000/api/utility/get_entities?folder=5
+GET {{url1}}/api/utility/get_entities?folder=10
 Authorization: Token {{auth_token}}
 
 ### shared with me

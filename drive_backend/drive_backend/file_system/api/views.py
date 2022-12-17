@@ -271,7 +271,9 @@ class FilesandFolders(ObjectMultipleModelMixin, GenericViewSet):
         querylist = [
             {
                 "queryset": File.objects.filter(parent=parent),
-                "serializer_class": FileDetailSerializer,
+                "serializer_class": FileDetailSerializer
+            },
+            {
                 "queryset": Folder.objects.filter(parent=parent),
                 "serializer_class": FolderSerializer,
             }
