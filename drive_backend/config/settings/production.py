@@ -7,7 +7,7 @@ from .base import env
 SECRET_KEY = env("DJANGO_SECRET_KEY", default='test_key_123')
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["*"]
-
+DEBUG = env.bool("DJANGO_DEBUG_PROD", True)
 # DATABASES
 # ------------------------------------------------------------------------------
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405

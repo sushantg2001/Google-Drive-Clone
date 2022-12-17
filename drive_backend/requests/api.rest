@@ -1,8 +1,10 @@
 @json_type = application/json
+@url = http://43.204.97.215
+@url1 = http://localhost:8000
 
 ### get token
 # @name  get_token
-POST http://localhost:8000/auth-token/ HTTP/1.1
+POST {{url}}/auth-token/ HTTP/1.1
 Content-Type: application/json
 
 {
@@ -12,11 +14,11 @@ Content-Type: application/json
 ### details about user
 @auth_token = {{get_token.response.body.token}}
 ###
-GET http://localhost:8000/api/users/me/ HTTP/1.1
+GET {{url}}/api/users/me/ HTTP/1.1
 Authorization: Token {{auth_token}}
 
 ### get file details
-GET http://localhost:8000/api/files/11/
+GET {{url}}//localhost:8000/api/files/11/
 Authorization: Token {{auth_token}}
 
 ### delete file
