@@ -159,18 +159,19 @@ class FolderAccessViewSet(
         files_in_folder = File.objects.filter(parent = folder)
         folders_in_folder = Folder.objects.filter(parent = folder)
         for file in files_in_folder:
-            FileAccess.objects.update_or_create(
-                file = file,
-                user = User.objects.get(id=data['user']),
-                type = data['type']
-            )
+            obj =  FileAccess.objects.filter(file = file, user = User.objects.get(id=data['user']))
+            if obj.exists():
+                obj.update(type=data['type'])
+            else:
+                FileAccess.objects.create(file=file, user = User.objects.get(id=data['user']), type=data['type'])
+
 
         for child_folder in folders_in_folder:
-            FolderAccess.objects.update_or_create(
-                folder = child_folder,
-                user = User.objects.get(id=data['user']),
-                type = data['type']
-            )
+            obj =  FolderAccess.objects.filter(folder = child_folder, user = User.objects.get(id=data['user']))
+            if obj.exists():
+                obj.update(type=data['type'])
+            else:
+                FolderAccess.objects.create(folder=child_folder, user = User.objects.get(id=data['user']), type=data['type'])
 
         for child_folder in folders_in_folder:
             self.recursive_access_share(child_folder, data)

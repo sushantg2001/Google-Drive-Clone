@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ### get entities inside folder by ID (user should have access of the folder)
-GET http://localhost:8000/api/utility/get_entities?folder=5/
+GET http://localhost:8000/api/utility/get_entities?folder=5
 Authorization: Token {{auth_token}}
 
 ### shared with me
@@ -69,5 +69,3 @@ Authorization: Token {{auth_token}}
 DELETE http://localhost:8000/api/utility/share/folder/5-9/
 Content-Type: application/json
 Authorization: Token {{auth_token}}
-###
-GET http://13.233.133.41:8000/admin/
